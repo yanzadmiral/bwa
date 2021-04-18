@@ -6,3 +6,18 @@ npm install axios --save
 
 
 catatan setelah develop serivce media - setup service media
+
+
+
+
+-----
+sequilize untuk migration
+--
+
+nodemon untuk agar tidak restart server
+npm install -g nodemon
+
+nodemon bin/www
+
+--------
+npm install is-base64 base64-img --save
