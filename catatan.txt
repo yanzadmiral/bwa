@@ -3,3 +3,6 @@ npm install dotenv --save
 semua yang ada di route harus di daftarkan di app.js
 
 npm install axios --save
+
+
+catatan setelah develop serivce media - setup service media
