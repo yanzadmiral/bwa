@@ -1,0 +1,5 @@
+npm install dotenv --save
+
+semua yang ada di route harus di daftarkan di app.js
+
+npm install axios --save
