@@ -11,6 +11,8 @@ sequilize untuk migration
 npm install sequelize sequelize-cli --save
 npx sequelize init
 
+npx sequelize db:seed create --name=----
+npx sequelize db:seed:all
 
 -----------------------------nodemon-----------------------------
 nodemon untuk agar tidak restart server
