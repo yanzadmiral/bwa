@@ -1,23 +1,24 @@
+--------------------------------dotenv---------------------------
 npm install dotenv --save
 
-semua yang ada di route harus di daftarkan di app.js
 
+-----------------------------axios-------------------------------
 npm install axios --save
 
 
-catatan setelah develop serivce media - setup service media
-
-
-
-
------
+-----------------------------sequilize---------------------------
 sequilize untuk migration
---
+npm install sequelize sequelize-cli --save
+npx sequelize init
 
+
+-----------------------------nodemon-----------------------------
 nodemon untuk agar tidak restart server
 npm install -g nodemon
 
+#start nodemon
 nodemon bin/www
 
---------
+
+----------------------------base64image--------------------------
 npm install is-base64 base64-img --save
