@@ -24,3 +24,6 @@ nodemon bin/www
 
 ----------------------------base64image--------------------------
 npm install is-base64 base64-img --save
+
+-----------------------------validator---------------------------
+npm install fastest-validator --save

@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      tableName: "Users",
+      tableName: "users",
       tamestaps: true,
     }
   );
