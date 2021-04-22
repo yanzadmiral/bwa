@@ -7,5 +7,6 @@ router.post("/login", Userhandler.login);
 router.put("/:id", Userhandler.update);
 router.get("/:id", Userhandler.getuser);
 router.get("/", Userhandler.getusers);
+router.post("/logout", Userhandler.logout);
 
 module.exports = router;
