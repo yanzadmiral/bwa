@@ -1,4 +1,3 @@
-const bcrypt = require("bcrypt");
 const { User, RefreshTokens } = require("../../../models");
 const Validator = require("fastest-validator");
 const v = new Validator();
