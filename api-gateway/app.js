@@ -11,6 +11,8 @@ var mediaRouter = require("./routes/media");
 var ordersRouter = require("./routes/orders");
 var paymentsRouter = require("./routes/payments");
 
+var verifyTokenRouter = require("./middleware/verifyToken");
+
 var app = express();
 
 app.use(logger("dev"));
@@ -21,7 +23,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/courses", coursesRouter);
+app.use("/courses", verifyTokenRouter, coursesRouter);
 app.use("/media", mediaRouter);
 app.use("/orders", ordersRouter);
 app.use("/payments", paymentsRouter);
