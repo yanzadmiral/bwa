@@ -34,4 +34,40 @@ class MentorController extends Controller
             'data' => $mentor
         ], 200);
     }
+
+    public function update(Request $request, $id)
+    {
+        $rule = [
+            'name' => 'required|string',
+            'profile' => 'required|url',
+            'profession' => 'required|string',
+            'email' => 'required|email',
+        ];
+
+        $data = $request->all();
+
+        $validator = Validator::make($data,$rule);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors()
+            ],400);
+        }
+        $mentor = Mentor::find($id);
+
+
+        if (!$mentor) {
+            return response()->json([
+                'status'=> 'error',
+                'data' => 'mentor not found'
+            ], 400);
+        }
+        $mentor->fill($data);
+        $mentor->save();
+
+        return response()->json([
+            'status'=> 'success',
+            'data' => $mentor
+        ], 200);
+    }
 }
