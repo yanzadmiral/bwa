@@ -22,12 +22,12 @@ class Course extends Model
 
     public function chapters()
     {
-        return $this->belongsTo('App\Models\Chapter')->orderBy('id','ASC');
+        return $this->hasMany('App\Models\Chapter')->orderBy('id','ASC');
     }
 
     public function images()
     {
-        return $this->belongsTo('App\Models\ImageCourse')->orderBy('id','DESC');
+        return $this->hasMany('App\Models\ImageCourse')->orderBy('id','DESC');
 
     }
 }
