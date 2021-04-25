@@ -66,7 +66,7 @@ class ChapterController extends Controller
 
         if (!$Course) {
             return response()->json([
-                'status'=> 'success',
+                'status'=> 'error',
                 'data' => 'Course not found'
             ], 404);
         }
