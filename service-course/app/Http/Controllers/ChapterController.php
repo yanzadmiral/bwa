@@ -9,28 +9,22 @@ use Illuminate\Http\Request;
 
 class ChapterController extends Controller
 {
-    // public function index(Request $request)
-    // {
-    //     $course = Course::query();
+    public function index(Request $request)
+    {
+        $Chapter = Chapter::query();
 
-    //     $q = $request->query('q');
-    //     $status = $request->query('status');
+        $courseId = $request->query('course_id');
 
-    //     $course->when($q,function($query) use ($q)
-    //     {   
-    //         return $query->whereRaw("name LIKE '%".strtolower($q)."%'");
-    //     });
+        $Chapter->when($courseId,function($query) use ($courseId)
+        {   
+            return $query->where("course_id","=",$courseId);
+        });
 
-    //     $course->when($status,function($query) use ($status)
-    //     {   
-    //         return $query->where("status","=",$status);
-    //     });
-
-    //     return response()->json([
-    //         'status'=> 'success',
-    //         'data' => $course->paginate(10)
-    //     ]);
-    // }
+        return response()->json([
+            'status'=> 'success',
+            'data' => $Chapter->get()
+        ]);
+    }
 
     public function create(Request $request)
     {
@@ -67,57 +61,52 @@ class ChapterController extends Controller
         ], 200);
     }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $rule = [
-    //         'name' => 'string',
-    //         'certificate' => 'boolean',
-    //         'thumbnail' => 'string|url',
-    //         'type' => 'in:free,premium',
-    //         'status' => 'in:draft,published',
-    //         'price' => 'integer',
-    //         'level' => 'in:all-level,beginer,intermediate,advance',
-    //         'mentor_id' => 'integer',
-    //         'description' => 'string',
-    //     ];
+    public function update(Request $request, $id)
+    {
+        $rule = [
+            'name' => 'string',
+            'course_id' => 'integer',
+            
+        ];
 
-    //     $data = $request->all();
+        $data = $request->all();
 
-    //     $validator = Validator::make($data,$rule);
-    //     if ($validator->fails()) {
-    //         return response()->json([
-    //             'status' => 'error',
-    //             'message' => $validator->errors()
-    //         ],400);
-    //     }
-    //     $course = Course::find($id);
+        $validator = Validator::make($data,$rule);
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors()
+            ],400);
+        }
+        $Chapter = Chapter::find($id);
 
 
-    //     if (!$course) {
-    //         return response()->json([
-    //             'status'=> 'error',
-    //             'data' => 'Course not found'
-    //         ], 404);
-    //     }
+        if (!$Chapter) {
+            return response()->json([
+                'status'=> 'error',
+                'data' => 'Chapter not found'
+            ], 404);
+        }
 
-    //     $mentorId = $request->input('mentor_id');
-    //     $mentor = Mentor::find($mentorId);
+        $CourseId = $request->input('course_id');
+        $Course = Course::find($CourseId);
 
-    //     if (!$mentor) {
-    //         return response()->json([
-    //             'status'=> 'success',
-    //             'data' => 'mentor not found'
-    //         ], 404);
-    //     }
+        if (!$Course) {
+            return response()->json([
+                'status'=> 'error',
+                'data' => 'Course not found'
+            ], 404);
+        }
 
-    //     $course->fill($data);
-    //     $course->save();
+        $Chapter->fill($data);
+        $Chapter->save();
 
-    //     return response()->json([
-    //         'status'=> 'success',
-    //         'data' => $course
-    //     ], 200);
-    // }
+        return response()->json([
+            'status'=> 'success',
+            'data' => $Chapter
+        ], 200);
+    }
+
     // public function destroy($id)
     // {
     //     $course = Course::find($id);

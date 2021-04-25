@@ -112,7 +112,7 @@ class CourseController extends Controller
 
         if (!$mentor) {
             return response()->json([
-                'status'=> 'success',
+                'status'=> 'error',
                 'data' => 'mentor not found'
             ], 404);
         }
