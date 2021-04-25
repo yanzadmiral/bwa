@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ChapterController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,4 +30,10 @@ Route::get('courses',[CourseController::class,'index']);
 Route::post('courses',[CourseController::class,'create']);
 Route::put('courses/{id}',[CourseController::class,'update']);
 Route::delete('courses/{id}',[CourseController::class,'destroy']);
+
+
+//Route::get('courses',[CourseController::class,'index']);
+Route::post('chapters',[ChapterController::class,'create']);
+//Route::put('courses/{id}',[CourseController::class,'update']);
+//Route::delete('courses/{id}',[CourseController::class,'destroy']);
 
