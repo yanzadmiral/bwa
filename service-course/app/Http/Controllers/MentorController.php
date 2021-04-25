@@ -24,7 +24,7 @@ class MentorController extends Controller
         if (!$mentor) {
             return response()->json([
                 'status'=> 'error',
-                'data' => 'mentor not found'
+                'message' => 'mentor not found'
             ], 404);
         }
 
@@ -85,7 +85,7 @@ class MentorController extends Controller
         if (!$mentor) {
             return response()->json([
                 'status'=> 'error',
-                'data' => 'mentor not found'
+                'message' => 'mentor not found'
             ], 404);
         }
         $mentor->fill($data);
@@ -103,7 +103,7 @@ class MentorController extends Controller
         if (!$mentor) {
             return response()->json([
                 'status'=> 'error',
-                'data' => 'mentor not found'
+                'message' => 'mentor not found'
             ], 404);
         }
         $mentor->delete();
