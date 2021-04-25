@@ -10,39 +10,39 @@ use App\Models\Chapter;
 
 class LessonController extends Controller
 {
-    // public function index(Request $request)
-    // {
-    //     $Chapter = Chapter::query();
+    public function index(Request $request)
+    {
+        $lesson = Lesson::query();
 
-    //     $courseId = $request->query('course_id');
+        $chapterId = $request->query('chapter_id');
 
-    //     $Chapter->when($courseId,function($query) use ($courseId)
-    //     {   
-    //         return $query->where("course_id","=",$courseId);
-    //     });
+        $lesson->when($chapterId,function($query) use ($chapterId)
+        {   
+            return $query->where("chapter_id","=",$chapterId);
+        });
 
-    //     return response()->json([
-    //         'status'=> 'success',
-    //         'data' => $Chapter->get()
-    //     ]);
-    // }
+        return response()->json([
+            'status'=> 'success',
+            'data' => $lesson->get()
+        ]);
+    }
 
-    // public function show($id)
-    // {
-    //     $Chapter = Chapter::find($id);
+    public function show($id)
+    {
+        $Lesson = Lesson::find($id);
 
-    //     if (!$Chapter) {
-    //         return response()->json([
-    //             'status'=> 'error',
-    //             'message' => 'chapter not found'
-    //         ]);
-    //     }
+        if (!$Lesson) {
+            return response()->json([
+                'status'=> 'error',
+                'message' => 'Lesson not found'
+            ]);
+        }
 
-    //     return response()->json([
-    //         'status'=> 'success',
-    //         'data' => $Chapter
-    //     ]);
-    // }
+        return response()->json([
+            'status'=> 'success',
+            'data' => $Lesson
+        ]);
+    }
 
     public function create(Request $request)
     {
