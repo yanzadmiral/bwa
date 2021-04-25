@@ -36,11 +36,28 @@ class ImageCourseController extends Controller
                 'message' => 'course not found'
             ], 404);
         }
-        
+
         $ImageCourse = ImageCourse::create($data);
         return response()->json([
             'status'=> 'success',
             'data' => $ImageCourse
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+        $ImageCourse = ImageCourse::find($id);
+        if (!$ImageCourse) {
+            return response()->json([
+                'status'=> 'error',
+                'message' => 'Image Course not found'
+            ], 404);
+        }
+        $ImageCourse->delete();
+
+        return response()->json([
+            'status'=> 'success',
+            'data' => 'Image Course deleted'
         ], 200);
     }
 }
