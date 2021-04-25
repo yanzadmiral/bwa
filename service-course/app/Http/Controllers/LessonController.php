@@ -69,7 +69,7 @@ class LessonController extends Controller
         if (!$chapter) {
             return response()->json([
                 'status'=> 'error',
-                'data' => 'chapter not found'
+                'message' => 'chapter not found'
             ], 404);
         }
 
@@ -127,20 +127,20 @@ class LessonController extends Controller
         ], 200);
     }
 
-    // public function destroy($id)
-    // {
-    //     $chapter = Chapter::find($id);
-    //     if (!$chapter) {
-    //         return response()->json([
-    //             'status'=> 'error',
-    //             'data' => 'chapter not found'
-    //         ], 404);
-    //     }
-    //     $chapter->delete();
+    public function destroy($id)
+    {
+        $lesson = Lesson::find($id);
+        if (!$lesson) {
+            return response()->json([
+                'status'=> 'error',
+                'message' => 'lesson not found'
+            ], 404);
+        }
+        $lesson->delete();
 
-    //     return response()->json([
-    //         'status'=> 'success',
-    //         'data' => 'chapter deleted'
-    //     ], 200);
-    // }
+        return response()->json([
+            'status'=> 'success',
+            'data' => 'lesson deleted'
+        ], 200);
+    }
 }
