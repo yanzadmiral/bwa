@@ -21,17 +21,17 @@ function getUser($userId)
 
 function getUserByIds($userIds = [])
 {
-    $url = env('SERVICE_USER_URL')."users/".$userIds;
+    $url = env('SERVICE_USER_URL')."users/";
 
     try {
-        if (count($userId) === 0) {
+        if (count($userIds) === 0) {
             return [
                 "status" => 'success',
                 'http_code' => 200,
                 'data' => []
             ];
         }
-        $response = Http::timeout(10)->get($url, ['user_ids[]' => $userIds]);
+        $response = Http::timeout(10)->get($url, ['user_ids[]' => 1]);
         $data = $response->json();
         $data['http_code'] = $response->getStatusCode();
         return $data;
