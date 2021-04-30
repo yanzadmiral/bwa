@@ -25,6 +25,7 @@ use App\Http\Controllers\ReviewController;
 // });
 
 Route::get('mentors',[MentorController::class,'index']);
+Route::post('mentors',[MentorController::class,'create']);
 Route::get('mentors/{id}',[MentorController::class,'show']);
 Route::put('mentors/{id}',[MentorController::class,'update']);
 Route::delete('mentors/{id}',[MentorController::class,'destroy']);
