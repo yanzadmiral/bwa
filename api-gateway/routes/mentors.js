@@ -6,5 +6,7 @@ const handlermedia = require('./handler/mentors');
 router.get('/', handlermedia.getall);
 router.get('/:id', handlermedia.get);
 router.post('/', handlermedia.create);
+router.put('/:id', handlermedia.update);
+router.delete('/:id', handlermedia.destroy);
 
 module.exports = router;
