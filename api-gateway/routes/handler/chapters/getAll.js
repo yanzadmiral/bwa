@@ -1,33 +1,17 @@
 const apiAdapter = require("../../apiAdapter");
 
-const { URL_SERVICE_COURSE,HOSTNAME } = process.env;
+const { URL_SERVICE_COURSE } = process.env;
 
 const api = apiAdapter(URL_SERVICE_COURSE);
 
 module.exports = async (req, res) => {
   try {
-    const courses = await api.get("/courses",{
-        params :{
-            ...req.query
-        }
+    const chapters = await api.get("/chapters",{
+      params:{
+        ...req.query
+      }
     });
-
-    const firstPage = courses.data.data.first_page_url.split('?').pop();
-    const lastPage = courses.data.data.last_page_url.split('?').pop();
-    courses.data.data.last_page_url = `${HOSTNAME}/courses?`+lastPage;
-    courses.data.data.first_page_url = `${HOSTNAME}/courses?`+firstPage;
-
-    if (courses.data.data.next_page_url) {
-        const nextPage = courses.data.data.next_page_url.split('?').pop();
-        courses.data.data.next_page_url = `${HOSTNAME}/courses?`+nextPage;
-    }
-    if (courses.data.data.prev_page_url) {
-        const prevPage = courses.data.data.prev_page_url.split('?').pop();
-        courses.data.data.prev_page_url = `${HOSTNAME}/courses?`+prevPage;
-    }
-
-    courses.data.data.path = `${HOSTNAME}/courses`;
-    return res.json(courses.data);
+    return res.json(chapters.data);
   } catch (error) {
     //console.log(error);
     if (error.code == "ECONNREFUSED") {

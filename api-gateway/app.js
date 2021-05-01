@@ -29,7 +29,7 @@ app.use("/courses", coursesRouter);
 app.use("/media", mediaRouter);
 app.use("/orders", ordersRouter);
 app.use("/payments", paymentsRouter);
-app.use("/chapters", chaptersRouter);
+app.use("/chapters",verifyToken,  chaptersRouter);
 app.use("/refresh-tokens", refreshTokensRouter);
 app.use("/mentors", verifyToken, MentorsRouter);
 

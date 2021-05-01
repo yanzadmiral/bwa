@@ -3,8 +3,8 @@ const router = express.Router();
 const verifyToken = require("../middleware/verifyToken");
 const handlermedia = require('./handler/chapters');
 /* GET users listing. */
-// router.get('/', handlermedia.getall);
-// router.get('/:id', handlermedia.get);
+router.get('/', handlermedia.getall);
+router.get('/:id', handlermedia.get);
 
 router.post('/', handlermedia.create);
 router.put('/:id', handlermedia.update);
