@@ -17,6 +17,7 @@ const verifyToken = require("./middleware/verifyToken");
 const MentorsRouter = require("./routes/mentors");
 const ImageCoursesRouter = require("./routes/imageCourses");
 const MyCoursesRouter = require("./routes/myCourses");
+const ReviewsRouter = require("./routes/reviews");
 
 const app = express();
 
@@ -38,5 +39,6 @@ app.use("/refresh-tokens", refreshTokensRouter);
 app.use("/mentors", verifyToken, MentorsRouter);
 app.use("/image-courses", verifyToken, ImageCoursesRouter);
 app.use("/my-courses", verifyToken, MyCoursesRouter);
+app.use("/reviews", verifyToken, ReviewsRouter);
 
 module.exports = app;
