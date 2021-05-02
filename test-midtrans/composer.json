@@ -1,0 +1,13 @@
+{
+    "name": "yanzadmiral/test-midtrans",
+    "description": "coba",
+    "authors": [
+        {
+            "name": "Yayan Cahyani",
+            "email": "yayancloud@gmail.com"
+        }
+    ],
+    "require": {
+        "midtrans/midtrans-php": "^2.3"
+    }
+}
