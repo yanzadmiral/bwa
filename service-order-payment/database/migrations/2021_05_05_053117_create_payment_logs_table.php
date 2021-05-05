@@ -17,7 +17,7 @@ class CreatePaymentLogsTable extends Migration
             $table->id();
             $table->string('status');
             $table->string('payment_type');
-            $table->json('raw_respon');
+            $table->json('raw_response');
             $table->foreignId('order_id')->constrained('orders')->onDelete('cascade');
             $table->timestamps();
         });
