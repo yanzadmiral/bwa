@@ -9,6 +9,22 @@ use App\Models\Order;
 class OrderController extends Controller
 {
 
+    public function index(Request $request)
+    {
+        $userId = $request->input('user_id');
+        $order = Order::query();
+
+        $order->when($userId,function($query) use ($userId)
+        {
+            return $query->where('user_id','=',$userId);
+        });
+
+        return response()->json([
+            'status' => 'success',
+            'data' => $order->get()
+        ], 200);
+    }
+
     public function create(Request $request)
     {
         $user = $request->input('user');
