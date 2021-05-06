@@ -18,6 +18,7 @@ const MentorsRouter = require("./routes/mentors");
 const ImageCoursesRouter = require("./routes/imageCourses");
 const MyCoursesRouter = require("./routes/myCourses");
 const ReviewsRouter = require("./routes/reviews");
+const WebhookRouter = require("./routes/webhook");
 
 const app = express();
 
@@ -40,5 +41,6 @@ app.use("/mentors", verifyToken, MentorsRouter);
 app.use("/image-courses", verifyToken, ImageCoursesRouter);
 app.use("/my-courses", verifyToken, MyCoursesRouter);
 app.use("/reviews", verifyToken, ReviewsRouter);
+app.use("/webhook", WebhookRouter);
 
 module.exports = app;
