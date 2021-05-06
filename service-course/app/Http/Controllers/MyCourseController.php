@@ -78,6 +78,12 @@ class MyCourseController extends Controller
         }
         
         if ($course->type === 'premium') {
+            if ($course->price === 0) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Price cannot be 0'
+                ],405);
+            }
             $order = postOrder([
                 'course' => $course->toArray(),
                 'user' => $user['data']
