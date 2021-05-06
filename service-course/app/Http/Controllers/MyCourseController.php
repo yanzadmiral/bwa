@@ -77,9 +77,37 @@ class MyCourseController extends Controller
             ], 404);
         }
         
+        if ($course->type === 'premium') {
+            $order = postOrder([
+                'course' => $course->toArray(),
+                'user' => $user['data']
+            ]);
+            if ($order['status'] === 'error') {
+                return response()->json([
+                    'status'=> $order['status'],
+                    'message' => $order['message']
+                ], $order['http_code']);
+            }
+            return response()->json([
+                'status' => $order['status'],
+                'data' => $order['data']
+            ]);
+        }else {
+            $mycourse = MyCourse::create($data);
+            return response()->json([
+                'status'=> 'success',
+                'data' => $mycourse
+            ], 200);
+        }
+    }
+
+    public function createPremiumAccess(Request $request)
+    {
+        $data = $request->all();
         $mycourse = MyCourse::create($data);
+
         return response()->json([
-            'status'=> 'success',
+            'status' => 'success',
             'data' => $mycourse
         ], 200);
     }
