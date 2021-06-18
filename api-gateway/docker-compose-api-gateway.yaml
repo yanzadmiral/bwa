@@ -1,0 +1,33 @@
+version: '3.8'
+
+services: 
+  mysqldb:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: example
+    ports:
+      - 3309:3306
+    volumes: 
+      - db-config:/etc/mysql
+      - db-data:/var/lib/mysql
+      - ./db/backup/files/:/data_backup/data
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    image: node-mysql-app
+    ports:
+      - 3000:3000
+    volumes: 
+      - .:/app
+      - node_modules
+    depends_on:
+      - mysqldb
+    stdin_open: true
+    tty: true
+
+volumes: 
+  db-config:
+  db-data:
