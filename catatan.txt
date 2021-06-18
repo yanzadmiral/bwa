@@ -27,3 +27,15 @@ npm install is-base64 base64-img --save
 
 -----------------------------validator---------------------------
 npm install fastest-validator --save
+
+
+
+
+
+
+----front end
+
+npx create-next-app
+npm install --save-dev autoprefixer tailwindcss 
+npx tailwindcss init --full
+
